@@ -1,10 +1,10 @@
 import { useEffect, useRef } from "react";
 import "../styles/coin.css";
 
-import { useSelector, useDispatch } from "react-redux";
-import { incrementClicks, updateBalance } from "../store/mineSlice";
+import { useDispatch } from "react-redux";
+import { updateProject } from "../store/mineSlice";
 
-const Coin = ({ unitAmount = 10 }) => {
+const Coin = ({ unitAmount = 1, project }) => {
   const dispatch = useDispatch();
 
   const coinRef = useRef(null);
@@ -29,7 +29,7 @@ const Coin = ({ unitAmount = 10 }) => {
     // tilt the main coin
     handleTap(event);
 
-    dispatch(incrementClicks());
+    dispatch(updateProject({ id: project.id, clicks: 1 }));
 
     // create a small coin
     const coin = document.createElement("div");

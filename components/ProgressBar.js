@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 const ProgressBar = ({
   currentCount,
   totalCount,
-  minValue,
+
   minDate,
   maxDate,
   mode = "range",
@@ -40,6 +40,12 @@ const ProgressBar = ({
   };
 
   useEffect(() => {
+    if (mode === "date") {
+      setProgress(calculateDateProgress(minDate, maxDate));
+      return;
+    }
+    if (!totalCount || !currentCount) return;
+
     if (currentCount / totalCount >= 1) {
       setProgress(100);
       return;

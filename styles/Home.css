@@ -22,6 +22,6 @@
 }
 
 .collect-button {
-  @apply rounded-2xl transition-all duration-300 focus:outline-none active:outline-none fixed bottom-28 left-1/2 -translate-x-1/2 
+  @apply rounded-2xl transition-all duration-300 focus:outline-none active:outline-none absolute bottom-28 left-1/2 -translate-x-1/2 
    w-fit mx-auto shadow-lg block mt-6  py-2 px-5 bg-opacity-30 font-bold  text-white;
 }
