@@ -104,7 +104,7 @@ function ProjectView({ project }) {
         <div className="bg-slice2"></div>
       </div>
 
-      <div className="page-content h-[94%] w-full flex flex-col justify-between overflow-x-hidden pb-20 pt-10 px-4">
+      <div className="page-content h-[90%] w-full flex flex-col justify-between overflow-x-hidden pb-20 pt-3 px-4">
         <div className="items-center text-white text-xl w-full">
           <h2 className="text-3xl text-white text-center font-bold mb-6">
             {project.name}
@@ -144,7 +144,9 @@ function ProjectView({ project }) {
         disabled={!canCollect}
         onClick={handleCollect}
         className={` collect-button  ${
-          canCollect ? "bg-app-pink" : "bg-gray-400"
+          canCollect
+            ? "bg-app-pink border-app-pink"
+            : "bg-gray-400 border-gray-400"
         }`}
       >
         Collect
