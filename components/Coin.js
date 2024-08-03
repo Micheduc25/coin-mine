@@ -37,7 +37,7 @@ const Coin = ({ unitAmount = 1, project }) => {
       "class",
       "s-coin rounded-full w-fit overflow-hidden fixed flex text-white items-center text-sm"
     );
-    coin.innerHTML = `<img src="/images/coin.png" alt="Coin" width="30" height="30" /> <span>+${unitAmount}</span>`;
+    coin.innerHTML = `<img src="/images/coin.png" alt="Coin" width="30" height="30" /> <span class="select-none">+${unitAmount}</span>`;
     coin.style.left = `${event.clientX - 15}px`;
     coin.style.top = "0px";
     document.body.appendChild(coin);
