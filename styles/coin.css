@@ -1,0 +1,26 @@
+.c-coin {
+  transform-style: preserve-3d;
+
+  perspective: 1000px;
+  touch-action: none;
+}
+
+.c-container {
+  position: relative;
+}
+
+.c-container::after {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -15px;
+  border-radius: 50%;
+  background: linear-gradient(to top right, #000000, #111111, #222222);
+  opacity: 0.15;
+  z-index: 5;
+  /* shadow */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}

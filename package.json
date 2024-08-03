@@ -9,9 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@flaticon/flaticon-uicons": "^3.3.1",
+    "@reduxjs/toolkit": "^2.2.7",
+    "framer-motion": "^11.3.9",
+    "lodash": "^4.17.21",
+    "next": "14.2.5",
+    "next-redux-wrapper": "^8.1.0",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.2.5"
+    "react-redux": "^9.1.2",
+    "react-slick": "^0.30.2"
   },
   "devDependencies": {
     "postcss": "^8",

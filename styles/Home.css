@@ -1,0 +1,27 @@
+.bg-slice1 {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 76%);
+  height: 100%;
+  transform: translateY(-35%);
+  background: radial-gradient(circle, #1d3154 50%, #0b1731);
+}
+
+.bg-slice2 {
+  clip-path: polygon(0 0, 100% 41%, 100% 100%, 0 100%);
+  height: 60%;
+  transform: translateY(-100%);
+  background: radial-gradient(circle, #1d4277 30%, #091933 100%);
+}
+
+.number {
+  position: absolute;
+  font-size: 18px;
+  opacity: 0;
+  color: white;
+  font-weight: bold;
+  transition: all 2s ease-out;
+}
+
+.collect-button {
+  @apply rounded-2xl transition-all duration-300 focus:outline-none active:outline-none fixed bottom-28 left-1/2 -translate-x-1/2 
+   w-fit mx-auto shadow-lg block mt-6  py-2 px-5 bg-opacity-30 font-bold  text-white;
+}

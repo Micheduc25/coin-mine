@@ -1,0 +1,39 @@
+.nav-bar-item {
+  cursor: pointer;
+  background: transparent;
+  position: relative;
+  transition: 0.3s;
+  /* overflow: hidden; */
+  border: 1px solid transparent;
+}
+
+.nav-bar-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, #2cc2d0 60%, #0b1d41);
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: -1;
+  @apply rounded-lg;
+}
+
+.nav-bar-item:hover::before {
+  opacity: 1;
+  border: 1px solid #2cc2d0;
+}
+
+.nav-bar-item.active::before {
+  opacity: 1;
+}
+
+.nav-bar-item.active {
+  border: 1px solid #2cc2d0;
+}
+
+.nav-icon {
+  @apply text-base lg:text-lg;
+}
