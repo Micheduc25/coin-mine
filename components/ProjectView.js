@@ -48,21 +48,15 @@ function ProjectView({ project }) {
   }
 
   function animateNumbers() {
-    let remainingValue = project.clicks;
     let index = 0;
 
     function createNextNumber() {
-      if (remainingValue > 0) {
-        const increment = Math.min(
-          Math.floor(Math.random() * remainingValue) + 1,
-          remainingValue
-        );
-        remainingValue -= increment;
-
+      if (index < 40) {
+        const increment = Math.floor(Math.random() * 100);
         setTimeout(() => {
           createRisingNumber(increment);
           createNextNumber();
-        }, index * 200);
+        }, 50);
 
         index++;
       }
@@ -73,28 +67,37 @@ function ProjectView({ project }) {
 
   const animateBalanceIncrement = (newBalance) => {
     const increment = newBalance - balance;
-    const step = Math.floor(increment / 100);
+    const step = Math.floor(increment / 200);
+    const duration = 4000;
 
     let current = balance;
+    let startTime = null;
 
-    const interval = setInterval(() => {
+    const animate = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const elapsedTime = timestamp - startTime;
+      const progress = elapsedTime / duration;
+
       current += step;
 
       dispatch(updateBalance(current));
 
       if (current >= newBalance) {
-        clearInterval(interval);
         current = newBalance;
       }
 
-      // setCount((prev) => prev + 1);
-    }, 20);
+      if (elapsedTime < duration) {
+        requestAnimationFrame(animate);
+      }
+    };
+
+    requestAnimationFrame(animate);
   };
 
   const handleCollect = () => {
     setCanCollect(false);
     animateNumbers();
-    animateBalanceIncrement(balance + project.clicks);
+    animateBalanceIncrement(balance + 1000); // change this later when we get balance from backend
   };
 
   return (
