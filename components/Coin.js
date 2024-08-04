@@ -4,7 +4,7 @@ import "../styles/coin.css";
 import { useDispatch } from "react-redux";
 import { updateProject } from "../store/mineSlice";
 
-const Coin = ({ unitAmount = 1, project }) => {
+const Coin = ({ unitAmount = 1, project, image }) => {
   const dispatch = useDispatch();
 
   const coinRef = useRef(null);
@@ -37,7 +37,9 @@ const Coin = ({ unitAmount = 1, project }) => {
       "class",
       "s-coin rounded-full w-fit overflow-hidden fixed flex text-white items-center text-sm"
     );
-    coin.innerHTML = `<img src="/images/coin.png" alt="Coin" width="30" height="30" /> <span class="select-none">+${unitAmount}</span>`;
+    coin.innerHTML = `<img src="${
+      project.image || "/images/coin2.jpeg"
+    }" alt="Coin" width="30" height="30" /> <span class="select-none">+${unitAmount}</span>`;
     coin.style.left = `${event.clientX - 15}px`;
     coin.style.top = "0px";
     document.body.appendChild(coin);
@@ -102,7 +104,12 @@ const Coin = ({ unitAmount = 1, project }) => {
         ref={coinRef}
         className="c-coin rounded-full w-fit overflow-hidden shadow-lg transition-transform duration-100 mx-auto"
       >
-        <img src="/images/coin.png" alt="Coin" width={200} height={200} />
+        <img
+          src={project.image || "/images/coin2.jpeg"}
+          alt="Coin"
+          width={200}
+          height={200}
+        />
         <div className="c-shadow"></div>
       </div>
     </div>

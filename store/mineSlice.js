@@ -15,6 +15,7 @@ const initialState = {
       startDate: null,
       endDate: null,
       mode: "range",
+      image: "/images/coin2.jpeg",
     },
     {
       id: 2,
@@ -25,6 +26,7 @@ const initialState = {
       startDate: "2021-09-01",
       endDate: "2024-09-30",
       mode: "date",
+      image: "/images/coin3.jpeg",
     },
     {
       id: 3,
@@ -35,6 +37,7 @@ const initialState = {
       startDate: null,
       endDate: null,
       mode: "range",
+      image: "/images/coin4.jpeg",
     },
   ],
 };
