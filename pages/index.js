@@ -19,7 +19,7 @@ function Home() {
     showNotification(
       `Audio ${!isMute ? "turned off" : "turned on"}`,
       "info",
-      3000
+      1500
     );
   };
 
