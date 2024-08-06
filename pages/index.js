@@ -1,35 +1,56 @@
 import "@/styles/Home.css";
 
 import { useSelector, useDispatch } from "react-redux";
-import Slider from "react-slick";
-import ProjectView from "@/components/ProjectView";
+import { toggleMute } from "@/store/mineSlice";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import {
-  incrementClicks,
-  updateBalance,
-  updateProject,
-} from "../store/mineSlice";
+import { useNotification } from "@/contexts/NotificationContext";
+
+import CubeCarousel from "@/components/CubeCarousel";
 
 function Home() {
-  const { projects } = useSelector((state) => state.mine);
+  const { projects, isMute } = useSelector((state) => state.mine);
   const dispatch = useDispatch();
+  const { showNotification } = useNotification();
 
-  var settings = {
-    dots: false,
-    infinite: false,
-    autoplay: false,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
+  const toggleSound = () => {
+    dispatch(toggleMute());
+
+    showNotification(
+      `Audio ${!isMute ? "turned off" : "turned on"}`,
+      "info",
+      3000
+    );
   };
+
+  // var settings = {
+  //   dots: false,
+  //   infinite: false,
+  //   autoplay: false,
+  //   speed: 500,
+  //   slidesToShow: 1,
+  //   slidesToScroll: 1,
+  // };
   return (
     <div className="overflow-hidden">
-      <Slider {...settings}>
+      <CubeCarousel projects={projects}></CubeCarousel>
+
+      <div
+        className="absolute right-5 top-5 text-white z-10"
+        onClick={toggleSound}
+      >
+        {isMute ? (
+          <i className="fi fi-sr-volume-slash"></i>
+        ) : (
+          <i className="fi fi-sr-volume"></i>
+        )}
+      </div>
+
+      {/* <Slider {...settings}>
         {projects.map((project) => (
           <ProjectView key={project.id} project={project} />
         ))}
-      </Slider>
+      </Slider> */}
     </div>
   );
 }

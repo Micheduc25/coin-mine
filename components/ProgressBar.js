@@ -10,17 +10,34 @@ const ProgressBar = ({
 }) => {
   const [progress, setProgress] = useState(0);
 
-  const formatNumber = (number) => {
-    if (number >= 1000000000) {
-      return (number / 1000000000).toFixed(1) + "B";
-    } else if (number >= 1000000) {
-      return (number / 1000000).toFixed(1) + "M";
-    } else if (number >= 1000) {
-      return (number / 1000).toFixed(1) + "K";
-    } else {
-      return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  function formatNumber(num) {
+    const absNum = Math.abs(num);
+
+    if (absNum >= 1e9) {
+      const billions = absNum / 1e9;
+      if (Number.isInteger(billions)) {
+        return (num < 0 ? "-" : "") + billions + " B";
+      }
     }
-  };
+
+    if (absNum >= 1e6) {
+      const millions = absNum / 1e6;
+      if (Number.isInteger(millions) || millions.toFixed(1) % 1 === 0) {
+        return (
+          (num < 0 ? "-" : "") + millions.toFixed(1).replace(".0", "") + " M"
+        );
+      }
+    }
+
+    if (absNum >= 1e3) {
+      const thousands = absNum / 1e3;
+      if (Number.isInteger(thousands)) {
+        return (num < 0 ? "-" : "") + thousands + " K";
+      }
+    }
+
+    return num.toString();
+  }
 
   const formateDate = (date) => {
     return new Date(date).toLocaleDateString("en-US", {
@@ -93,8 +110,8 @@ const ProgressBar = ({
           <span>{formateDate(maxDate)}</span>
         </div>
       )}
-      <div className="mx-auto w-fit text-white font-bold">
-        {`${progress.toFixed(2)}%`}
+      <div className="mx-auto w-fit text-white text-xl font-bergen">
+        {`${progress.toFixed(2)} ${mode == "range" ? "%" : ""}`}
       </div>
     </div>
   );

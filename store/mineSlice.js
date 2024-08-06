@@ -4,18 +4,19 @@ import { max } from "lodash";
 const initialState = {
   clicks: 0,
   balance: 0,
+  isMute: false,
 
   projects: [
     {
       id: 1,
       name: "Etherium",
       currentVal: 5000000,
-      maxVal: 15000000,
+      maxVal: 789000000,
       clicks: 0,
       startDate: null,
       endDate: null,
       mode: "range",
-      image: "/images/coin2.jpeg",
+      image: "https://s2.coinmarketcap.com/static/img/coins/64x64/3408.png",
     },
     {
       id: 2,
@@ -53,6 +54,10 @@ const gameSlice = createSlice({
       state.balance = action.payload;
     },
 
+    toggleMute: (state) => {
+      state.isMute = !state.isMute;
+    },
+
     updateProject: (state, action) => {
       const { id, clicks, currentVal } = action.payload;
       const project = state.projects.find((p) => p.id === id);
@@ -67,6 +72,6 @@ const gameSlice = createSlice({
   },
 });
 
-export const { incrementClicks, updateBalance, updateProject } =
+export const { incrementClicks, updateBalance, updateProject, toggleMute } =
   gameSlice.actions;
 export default gameSlice.reducer;

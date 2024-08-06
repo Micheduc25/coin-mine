@@ -1,11 +1,15 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "../styles/coin.css";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateProject } from "../store/mineSlice";
 
-const Coin = ({ unitAmount = 1, project, image }) => {
+const Coin = ({ unitAmount = 1, project }) => {
   const dispatch = useDispatch();
+
+  const { isMute } = useSelector((state) => state.mine);
+
+  const [canPlayAudio, setCanPlayAudio] = useState(false);
 
   const coinRef = useRef(null);
 
@@ -20,26 +24,29 @@ const Coin = ({ unitAmount = 1, project, image }) => {
 
     coin.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
 
+    if (canPlayAudio) {
+      const audio = new Audio("/audios/coin-pickup.mp3");
+      audio.volume = 0.3;
+      audio.play();
+    }
+
     setTimeout(() => {
       coin.style.transform = "rotateX(0) rotateY(0)";
     }, 100);
   };
 
   const createSmallCoin = (event) => {
-    // tilt the main coin
-    handleTap(event);
-
     dispatch(updateProject({ id: project.id, clicks: 1 }));
 
     // create a small coin
     const coin = document.createElement("div");
     coin.setAttribute(
       "class",
-      "s-coin rounded-full w-fit overflow-hidden fixed flex text-white items-center text-sm"
+      "s-coin w-fit fixed flex text-white items-center text-sm z-10"
     );
     coin.innerHTML = `<img src="${
       project.image || "/images/coin2.jpeg"
-    }" alt="Coin" width="30" height="30" /> <span class="select-none">+${unitAmount}</span>`;
+    }" alt="Coin" width="30" height="30" class="rounded-full overflow-hidden" /> <span class="select-none">+${unitAmount}</span>`;
     coin.style.left = `${event.clientX - 15}px`;
     coin.style.top = "0px";
     document.body.appendChild(coin);
@@ -52,7 +59,7 @@ const Coin = ({ unitAmount = 1, project, image }) => {
     let rotationSpeed = Math.random() * 10 - 5;
     let rotation = 0;
     let lastTimestamp = performance.now();
-    const floorY = window.innerHeight - window.innerHeight * 0.26;
+    const floorY = window.innerHeight - window.innerHeight * 0.32;
 
     const animate = (timestamp) => {
       const deltaTime = (timestamp - lastTimestamp) / 16;
@@ -95,14 +102,24 @@ const Coin = ({ unitAmount = 1, project, image }) => {
   };
 
   useEffect(() => {
-    coinRef.current.addEventListener("pointerdown", createSmallCoin);
+    // coinRef.current.addEventListener("pointerdown");
+    setCanPlayAudio(!isMute);
   }, []);
+
+  useEffect(() => {
+    setCanPlayAudio(!isMute);
+  }, [isMute]);
 
   return (
     <div className="c-container w-fit mx-auto">
       <div
         ref={coinRef}
         className="c-coin rounded-full w-fit overflow-hidden shadow-lg transition-transform duration-100 mx-auto"
+        onPointerDown={(e) => {
+          // tilt the main coin
+          handleTap(e);
+          createSmallCoin(e);
+        }}
       >
         <img
           src={project.image || "/images/coin2.jpeg"}

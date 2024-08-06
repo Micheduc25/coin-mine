@@ -1,7 +1,43 @@
+@font-face {
+  font-family: "BergenText";
+  src: url("/fonts/BergenText-Regular.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "BergenText";
+  src: url("/fonts/BergenText-SemiBold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "BergenText";
+  src: url("/fonts/BergenText-Italic.otf") format("opentype");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "BergenText";
+  src: url("/fonts/BergenText-BoldItalic.otf") format("opentype");
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "BergenText";
+  src: url("/fonts/BergenText-SemiBoldItalic.otf") format("opentype");
+  font-weight: 600;
+  font-style: italic;
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
   overflow: hidden;
+  background: radial-gradient(circle, #1d4277 30%, #091933 100%);
 }

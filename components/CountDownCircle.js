@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../styles/CountdownTimer.css";
 
 const CountdownCircle = ({ diameter = 50, onEnd = () => {} }) => {
-  const [secondsLeft, setSecondsLeft] = useState(60);
+  const [secondsLeft, setSecondsLeft] = useState(3);
   const [fontSize, setFontSize] = useState(0.5);
   let interval;
   let fontInterval;

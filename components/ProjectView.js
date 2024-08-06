@@ -6,7 +6,7 @@ import { useEffect, useState, useRef } from "react";
 import { updateBalance, updateProject } from "../store/mineSlice";
 import { useSelector, useDispatch } from "react-redux";
 
-function ProjectView({ project }) {
+function ProjectView({ project, onCollectStart, onCollectEnd }) {
   const [canCollect, setCanCollect] = useState(false);
 
   const dispatch = useDispatch();
@@ -22,8 +22,8 @@ function ProjectView({ project }) {
 
   function createRisingNumber(value) {
     const number = document.createElement("div");
-    number.className = "number";
-    number.textContent = `+$${value}`;
+    number.className = "number z-10";
+    number.textContent = `+${value}`;
 
     const buttonRect = collectButtonRef.current.getBoundingClientRect();
     const balanceRect = balanceContainerRef.current.getBoundingClientRect();
@@ -49,6 +49,7 @@ function ProjectView({ project }) {
 
   function animateNumbers() {
     let index = 0;
+    if (onCollectStart) onCollectStart();
 
     function createNextNumber() {
       if (index < 40) {
@@ -59,6 +60,12 @@ function ProjectView({ project }) {
         }, 50);
 
         index++;
+      } else {
+        if (onCollectEnd) {
+          setTimeout(() => {
+            onCollectEnd();
+          }, 2000);
+        }
       }
     }
 
@@ -109,15 +116,15 @@ function ProjectView({ project }) {
 
       <div className="page-content h-[90%] w-full flex flex-col justify-between overflow-x-hidden pb-20 pt-3 px-4">
         <div className="items-center text-white text-xl w-full">
-          <h2 className="text-3xl text-white text-center font-bold mb-6">
+          <h2 className="text-3xl text-white text-center font-bold mb-6 ">
             {project.name}
           </h2>
           <div
             ref={balanceContainerRef}
             className="flex justify-center items-center mb-8 text-2xl"
           >
-            <i className="fi fi-sr-sack-dollar mr-2 "></i>
-            <span>{balance}</span>
+            <i className="fi fi-sr-sack-dollar mr-2"></i>
+            <span className="font-bergen">{balance}</span>
           </div>
           <ProgressBar
             currentCount={project.currentVal}
@@ -140,20 +147,23 @@ function ProjectView({ project }) {
 
             {!canCollect && <CountdownCircle onEnd={onCountEnd} />}
           </div>
+
+          <div className="flex justify-center">
+            <button
+              ref={collectButtonRef}
+              disabled={!canCollect}
+              onClick={handleCollect}
+              className={` collect-button z-10  ${
+                canCollect
+                  ? "bg-app-pink border-app-pink"
+                  : "bg-gray-400 border-gray-400"
+              }`}
+            >
+              Collect
+            </button>
+          </div>
         </div>
       </div>
-      <button
-        ref={collectButtonRef}
-        disabled={!canCollect}
-        onClick={handleCollect}
-        className={` collect-button  ${
-          canCollect
-            ? "bg-app-pink border-app-pink"
-            : "bg-gray-400 border-gray-400"
-        }`}
-      >
-        Collect
-      </button>
     </div>
   );
 }
