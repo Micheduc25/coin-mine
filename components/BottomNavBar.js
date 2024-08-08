@@ -1,8 +1,12 @@
 import NavBarItem from "./NavBarItem";
 
-export default function BottomNavBar() {
+export default function BottomNavBar({ bottom = 24 }) {
   return (
-    <nav className="fixed bottom-6 bg-primary-dark shadow-xl rounded-lg  py-[5px] px-[3px] left-1/2 -translate-x-1/2 z-20">
+    <nav
+      id="bottom-nav"
+      style={{ bottom: `${bottom}px` }}
+      className={`fixed bg-primary-dark shadow-xl rounded-lg  py-[5px] px-[3px] left-1/2 -translate-x-1/2 z-20`}
+    >
       <div className="container flex justify-between">
         <NavBarItem text="Mine" href="/">
           <i className="fi fi-br-pickaxe"></i>

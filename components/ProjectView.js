@@ -13,6 +13,7 @@ function ProjectView({ project, onCollectStart, onCollectEnd }) {
 
   const collectButtonRef = useRef(null);
   const balanceContainerRef = useRef(null);
+  const pageContentRef = useRef(null);
 
   const { balance } = useSelector((state) => state.mine);
 
@@ -107,6 +108,17 @@ function ProjectView({ project, onCollectStart, onCollectEnd }) {
     animateBalanceIncrement(balance + 1000); // change this later when we get balance from backend
   };
 
+  useEffect(() => {
+    const navBar = document.getElementById("bottom-nav");
+    const pageContent = pageContentRef.current;
+
+    const navBarHeight = navBar.getBoundingClientRect().height;
+
+    pageContent.style.height = `${
+      ((window.innerHeight - navBarHeight - 100) / window.innerHeight) * 100
+    }%`;
+  }, []);
+
   return (
     <div className="h-screen relative">
       <div className="page-background h-full w-full absolute overflow-hidden -z-10 ">
@@ -114,7 +126,10 @@ function ProjectView({ project, onCollectStart, onCollectEnd }) {
         <div className="bg-slice2"></div>
       </div>
 
-      <div className="page-content h-[90%] w-full flex flex-col justify-between overflow-x-hidden pb-20 pt-3 px-4">
+      <div
+        ref={pageContentRef}
+        className="page-content h-[80%] w-full flex flex-col justify-between overflow-x-hidden  pt-3 px-4"
+      >
         <div className="items-center text-white text-xl w-full">
           <h2 className="text-3xl text-white text-center font-bold mb-6 ">
             {project.name}

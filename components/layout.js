@@ -1,6 +1,7 @@
 import BottomNavBar from "./BottomNavBar";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 export default function Layout({ children }) {
   const router = useRouter();
@@ -22,7 +23,7 @@ export default function Layout({ children }) {
         </motion.div>
       </AnimatePresence>
 
-      <BottomNavBar />
+      <BottomNavBar bottom={10} />
     </>
   );
 }
