@@ -41,7 +41,7 @@ const ProjectItem = ({ project }) => {
         </div>
       </div>
       <div className="project-shape shape-r">
-        <div className="absolute right-2 z-10 flex items-center justify-center h-full">
+        <div className="absolute right-4 z-10 flex items-center justify-end h-full w-full">
           <span className="mr-2">{project.currentVal ?? 0}</span>
           <Image
             src="/images/coin.png"
