@@ -21,7 +21,7 @@ export default function BottomNavBar({ bottom = 24 }) {
           <i className="fi fi-sr-crypto-calendar"></i>
         </NavBarItem>
         <NavBarItem text="AirDrop" href="/airdrop">
-          <i className="fi fi-bs-humanitarian-mission"></i>
+          <i className="fi fi-ss-parachute-box"></i>
         </NavBarItem>
       </div>
     </nav>
