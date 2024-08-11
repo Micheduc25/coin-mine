@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { max } from "lodash";
 
 const initialState = {
   clicks: 0,
@@ -59,7 +58,7 @@ const gameSlice = createSlice({
     },
 
     updateProject: (state, action) => {
-      const { id, clicks, currentVal } = action.payload;
+      const { id, clicks } = action.payload;
       const project = state.projects.find((p) => p.id === id);
 
       if (!project) {
@@ -67,7 +66,6 @@ const gameSlice = createSlice({
       }
 
       project.clicks += clicks;
-      project.currentVal = currentVal;
     },
   },
 });

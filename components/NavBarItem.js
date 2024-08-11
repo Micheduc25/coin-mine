@@ -9,7 +9,7 @@ export default function NavBarItem({ children, text, textSize, href }) {
   return (
     <Link
       href={href}
-      className={`flex flex-col items-center justify-center nav-bar-item rounded-lg shadow-sm py-1 px-4 text-gray-300 hover:text-white mx-1 ${
+      className={`flex flex-col items-center justify-center nav-bar-item rounded-lg shadow-sm py-1 px-3 text-gray-300 hover:text-white mx-1 ${
         isActive ? "active" : ""
       }`}
     >

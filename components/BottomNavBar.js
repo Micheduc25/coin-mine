@@ -20,6 +20,9 @@ export default function BottomNavBar({ bottom = 24 }) {
         <NavBarItem text="Projet" href="/projet">
           <i className="fi fi-sr-crypto-calendar"></i>
         </NavBarItem>
+        <NavBarItem text="AirDrop" href="/airdrop">
+          <i className="fi fi-bs-humanitarian-mission"></i>
+        </NavBarItem>
       </div>
     </nav>
   );

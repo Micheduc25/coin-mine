@@ -1,5 +1,6 @@
+import "@/styles/Wallet.css";
 const Wallet = () => {
-  return <div>{/* Your component content goes here */}</div>;
+  return <div>Wallet</div>;
 };
 
 export default Wallet;

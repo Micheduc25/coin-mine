@@ -67,6 +67,7 @@ const ProgressBar = ({
       setProgress(100);
       return;
     }
+
     setProgress((currentCount / totalCount) * 100);
   }, [currentCount, totalCount]);
 

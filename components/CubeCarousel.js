@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import { EffectCube } from "swiper/modules";
 import ProjectView from "./ProjectView";
+import { useRouter } from "next/router";
 
 import "swiper/css";
 import "swiper/css/effect-cube";
@@ -11,6 +12,9 @@ const CubeCarousel = ({ projects }) => {
   const swiperRef = useRef(null);
   const [isEnabled, setIsEnabled] = useState(true);
   let enabled = true;
+  // const [intialSlide, setInitialSlide] = useState(0);
+
+  const router = useRouter();
 
   const toggleSwiper = () => {
     if (swiperRef.current && swiperRef.current.swiper) {
@@ -24,6 +28,21 @@ const CubeCarousel = ({ projects }) => {
       setIsEnabled(!isEnabled);
     }
   };
+
+  useEffect(() => {
+    const initialProjectIndex = router.query.projectId
+      ? parseInt(router.query.projectId) - 1
+      : 0;
+
+    console.log("we start at: ", initialProjectIndex);
+
+    setTimeout(
+      () =>
+        swiperRef.current &&
+        swiperRef.current.swiper.slideTo(initialProjectIndex),
+      10
+    );
+  }, [swiperRef.current]);
 
   return (
     <Swiper

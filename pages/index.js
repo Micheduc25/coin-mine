@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { useNotification } from "@/contexts/NotificationContext";
 
 import CubeCarousel from "@/components/CubeCarousel";
+import { useEffect } from "react";
 
 function Home() {
   const { projects, isMute } = useSelector((state) => state.mine);
@@ -23,14 +24,6 @@ function Home() {
     );
   };
 
-  // var settings = {
-  //   dots: false,
-  //   infinite: false,
-  //   autoplay: false,
-  //   speed: 500,
-  //   slidesToShow: 1,
-  //   slidesToScroll: 1,
-  // };
   return (
     <div className="overflow-hidden">
       <CubeCarousel projects={projects}></CubeCarousel>
@@ -45,12 +38,6 @@ function Home() {
           <i className="fi fi-sr-volume"></i>
         )}
       </div>
-
-      {/* <Slider {...settings}>
-        {projects.map((project) => (
-          <ProjectView key={project.id} project={project} />
-        ))}
-      </Slider> */}
     </div>
   );
 }

@@ -1,0 +1,46 @@
+.project-shape {
+  margin-top: 20px;
+  height: 70px;
+  position: relative;
+}
+
+.project-shape::after,
+.shape-r::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  background-color: inherit;
+  transform: skew(50deg);
+}
+
+.project-shape::after {
+  top: 0;
+  right: 0;
+  width: 120px;
+  transform-origin: top right;
+  border-bottom-right-radius: 20px;
+  background-color: #2268aaad;
+}
+
+.shape-l {
+  width: 67%;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-color: #2268aaad;
+}
+
+.shape-r {
+  width: 33%;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  background-color: #307ec6ad;
+}
+
+.shape-r::after {
+  top: 0;
+  left: 0;
+  width: 100%;
+  transform-origin: bottom right;
+  border-top-left-radius: 20px;
+  background-color: #307ec6ad;
+}

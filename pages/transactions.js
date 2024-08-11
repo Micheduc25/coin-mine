@@ -1,5 +1,5 @@
 const Transactions = () => {
-  return <div>{/* Your component content goes here */}</div>;
+  return <div>Transaction</div>;
 };
 
 export default Transactions;
