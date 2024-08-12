@@ -62,12 +62,7 @@ const AirDropPage = () => {
         </div>
         <AirDropCoin onTap={handleCoinTap} />
 
-        <div className="flex justify-center text-white text-2xl">
-          <div className="flex justify-center items-end h-[50px]">
-            {/* <i className="fi fi-sr-tap mr-2 "></i> */}
-            <span>{clicks}</span>
-          </div>
-        </div>
+        <div className="flex justify-center text-white text-2xl"></div>
       </div>
     </div>
   );
