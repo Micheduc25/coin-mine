@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
-import { EffectCube } from "swiper/modules";
+import { EffectCube, Virtual } from "swiper/modules";
 import ProjectView from "./ProjectView";
 import { useRouter } from "next/router";
 
@@ -56,11 +56,11 @@ const CubeCarousel = ({ projects }) => {
         shadowScale: 0.94,
       }}
       pagination={true}
-      modules={[EffectCube]}
+      modules={[EffectCube, Virtual]}
       className="projectSwiper"
     >
       {projects.map((project, index) => (
-        <SwiperSlide key={index}>
+        <SwiperSlide key={index} virtualIndex={index}>
           <ProjectView
             key={project.id}
             project={project}

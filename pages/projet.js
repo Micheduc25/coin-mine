@@ -21,10 +21,6 @@ const Projet = () => {
     setFilteredProjects(result);
   };
 
-  const clearSearch = () => {
-    setFilteredProjects(projects);
-  };
-
   const onPageChange = (page, projectsList) => {
     const indexOfLastItem = page * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
