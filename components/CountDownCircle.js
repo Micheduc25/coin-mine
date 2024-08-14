@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../styles/CountdownTimer.css";
 
 const CountdownCircle = ({ diameter = 50, onEnd = () => {} }) => {
-  const [secondsLeft, setSecondsLeft] = useState(3);
+  const [secondsLeft, setSecondsLeft] = useState(60);
   const [fontSize, setFontSize] = useState(0.5);
   let interval;
   let fontInterval;
@@ -13,14 +13,10 @@ const CountdownCircle = ({ diameter = 50, onEnd = () => {} }) => {
         if (prev - 1 <= 0) {
           clearInterval(interval);
           clearInterval(fontInterval);
-       
         }
 
         return prev - 1;
       });
-
-      
-
     }, 1000);
 
     fontInterval = setInterval(() => {
@@ -33,11 +29,11 @@ const CountdownCircle = ({ diameter = 50, onEnd = () => {} }) => {
     };
   }, []);
 
-  useEffect(()=>{
-    if(secondsLeft <=0){
+  useEffect(() => {
+    if (secondsLeft <= 0) {
       onEnd();
     }
-  },[secondsLeft])
+  }, [secondsLeft]);
 
   const radius = diameter / 2;
   const circumference = 2 * Math.PI * radius;

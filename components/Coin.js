@@ -105,10 +105,6 @@ const Coin = ({ unitAmount = 1, project, isLandScape }) => {
 
   useEffect(() => {
     setCanPlayAudio(!isMute);
-
-    coinRef.current.addEventListener("coinClick", (e) => {
-      console.log("custom-e: ", e.detail);
-    });
   }, []);
 
   useEffect(() => {
@@ -122,7 +118,7 @@ const Coin = ({ unitAmount = 1, project, isLandScape }) => {
         className="c-coin rounded-full w-fit overflow-hidden shadow-lg transition-transform duration-100 mx-auto"
         onPointerDown={(e) => {
           // tilt the main coin
-          // e.stopPropagation();
+
           handleTap(e);
           createSmallCoin(e);
         }}
