@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import { EffectCube, Virtual } from "swiper/modules";
 import ProjectView from "./ProjectView";
 import { useRouter } from "next/router";
+import "@/styles/CubeCarousel.css";
 
 import "swiper/css";
 import "swiper/css/effect-cube";
@@ -12,9 +13,10 @@ const CubeCarousel = ({ projects }) => {
   const swiperRef = useRef(null);
   const [isEnabled, setIsEnabled] = useState(true);
   let enabled = true;
-  // const [intialSlide, setInitialSlide] = useState(0);
 
   const router = useRouter();
+
+  const [isLandscape, setIsLandscape] = useState(false);
 
   const toggleSwiper = () => {
     if (swiperRef.current && swiperRef.current.swiper) {
@@ -44,32 +46,63 @@ const CubeCarousel = ({ projects }) => {
     );
   }, [swiperRef.current]);
 
+  useEffect(() => {
+    if (window.innerWidth > window.innerHeight && window.innerHeight < 500) {
+      setIsLandscape(true);
+    }
+
+    screen.orientation.addEventListener("change", (e) => {
+      setIsLandscape((prev) => {
+        const isLandscapeNew =
+          (e.target.type === "landscape-primary" ||
+            e.target.type === "landscape-secondary") &&
+          window.innerHeight < 500;
+        if (prev !== isLandscapeNew) {
+          console.log("lanscape is : ", isLandscapeNew);
+          return isLandscapeNew;
+        }
+        return prev;
+      });
+    });
+  }, []);
+
   return (
-    <Swiper
-      ref={swiperRef}
-      effect={"cube"}
-      grabCursor={true}
-      cubeEffect={{
-        shadow: true,
-        slideShadows: true,
-        shadowOffset: 20,
-        shadowScale: 0.94,
-      }}
-      pagination={true}
-      modules={[EffectCube, Virtual]}
-      className="projectSwiper"
-    >
-      {projects.map((project, index) => (
-        <SwiperSlide key={index} virtualIndex={index}>
-          <ProjectView
-            key={project.id}
-            project={project}
-            onCollectStart={toggleSwiper}
-            onCollectEnd={toggleSwiper}
-          />
-        </SwiperSlide>
-      ))}
-    </Swiper>
+    <div className="relative h-full c-carousel">
+      <div className="page-background h-full w-full absolute overflow-hidden -z-30 ">
+        <div className="bg-slice1"></div>
+        <div className="bg-slice2"></div>
+      </div>
+
+      <Swiper
+        ref={swiperRef}
+        effect={"cube"}
+        grabCursor={true}
+        cubeEffect={{
+          shadow: true,
+          slideShadows: true,
+          shadowOffset: 20,
+          shadowScale: 0.94,
+        }}
+        pagination={true}
+        modules={[EffectCube, Virtual]}
+        style={{
+          width: isLandscape ? "calc(100% - 100px)" : "100%",
+          marginLeft: isLandscape ? "auto" : "0",
+        }}
+        className={`projectSwiper z-50 ${isLandscape ? "landscape" : ""}`}
+      >
+        {projects.map((project, index) => (
+          <SwiperSlide key={project.id} virtualIndex={index}>
+            <ProjectView
+              key={project.id}
+              project={project}
+              onCollectStart={toggleSwiper}
+              onCollectEnd={toggleSwiper}
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
   );
 };
 

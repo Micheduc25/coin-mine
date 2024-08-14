@@ -1,0 +1,18 @@
+.bg-slice1 {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 76%);
+  height: 100%;
+  transform: translateY(-35%);
+  background: radial-gradient(circle, #1d3154 50%, #0b1731);
+}
+
+.bg-slice2 {
+  clip-path: polygon(0 0, 100% 41%, 100% 100%, 0 100%);
+  height: 60%;
+  transform: translateY(-100%);
+  background: radial-gradient(circle, #1d4277 30%, #091933 100%);
+}
+
+.swiper.landscape {
+  margin-left: auto !important;
+  margin-right: 0 !important;
+}

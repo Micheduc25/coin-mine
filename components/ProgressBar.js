@@ -111,7 +111,7 @@ const ProgressBar = ({
           <span>{formateDate(maxDate)}</span>
         </div>
       )}
-      <div className="mx-auto w-fit text-white text-xl font-bergen">
+      <div onClick={(e)=>{console.log(e.target)}} className="mx-auto w-fit text-white text-xl font-bergen">
         {`${progress.toFixed(2)} ${mode == "range" ? "%" : ""}`}
       </div>
     </div>

@@ -1,17 +1,17 @@
 .c-coin {
-  transform-style: preserve-3d;
+  /* transform-style: preserve-3d;
 
-  perspective: 1000px;
+  perspective: 1000px; */
   touch-action: none;
+  pointer-events: auto;
 }
 
 .c-container {
-  position: relative;
+  /* position: relative; */
 }
 
-.c-container::after {
-  content: "";
-  position: absolute;
+.c-shadow {
+  position: relative;
   width: 150px;
   height: 15px;
   left: 50%;

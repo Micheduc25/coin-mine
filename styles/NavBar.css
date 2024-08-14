@@ -1,0 +1,10 @@
+#bottom-nav {
+  @apply fixed bg-primary-dark shadow-xl rounded-lg py-[5px] px-[3px] left-1/2 -translate-x-1/2 z-20;
+}
+
+#bottom-nav.landscape {
+  @apply left-0 bottom-0 top-0 -translate-x-0 h-full w-24;
+}
+#bottom-nav.landscape > div {
+  flex-direction: column;
+}

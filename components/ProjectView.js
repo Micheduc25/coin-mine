@@ -5,9 +5,12 @@ import "@/styles/Home.css";
 import { useEffect, useState, useRef } from "react";
 import { updateBalance, updateProject } from "../store/mineSlice";
 import { useSelector, useDispatch } from "react-redux";
+import TestCoin from "./TestCoin";
 
 function ProjectView({ project, onCollectStart, onCollectEnd }) {
   const [canCollect, setCanCollect] = useState(false);
+
+  const [isLandScape, setIsLandScape] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -16,6 +19,16 @@ function ProjectView({ project, onCollectStart, onCollectEnd }) {
   const pageContentRef = useRef(null);
 
   const { balance } = useSelector((state) => state.mine);
+
+  const simulateCoinClick = (e) => {
+    const customEvent = new CustomEvent("coinClick", {
+      detail: e,
+      bubbles: true,
+      cancelable: true,
+    });
+
+    e.target.dispatchEvent(customEvent);
+  };
 
   const onCountEnd = () => {
     setCanCollect(true);
@@ -114,21 +127,41 @@ function ProjectView({ project, onCollectStart, onCollectEnd }) {
 
     const navBarHeight = navBar.getBoundingClientRect().height;
 
-    pageContent.style.height = `${
-      ((window.innerHeight - navBarHeight - 100) / window.innerHeight) * 100
-    }%`;
+    if (window.innerWidth > window.innerHeight && window.innerHeight < 500) {
+      setIsLandScape(true);
+      pageContent.style.height = `100%`;
+    } else {
+      pageContent.style.height = `${
+        ((window.innerHeight - navBarHeight - 100) / window.innerHeight) * 100
+      }%`;
+    }
+
+    screen.orientation.addEventListener("change", (e) => {
+      console.log(e.target.type);
+
+      setIsLandScape((prev) => {
+        const isLandscapeNew =
+          e.target.type === "landscape-primary" ||
+          e.target.type === "landscape-secondary";
+        if (prev !== isLandscapeNew) {
+          window.location.reload();
+          return isLandscapeNew;
+        }
+        return prev;
+      });
+    });
   }, []);
 
   return (
     <div className="h-screen relative">
-      <div className="page-background h-full w-full absolute overflow-hidden -z-10 ">
+      {/* <div className="page-background h-full w-full absolute overflow-hidden -z-10 ">
         <div className="bg-slice1"></div>
         <div className="bg-slice2"></div>
-      </div>
+      </div> */}
 
       <div
         ref={pageContentRef}
-        className="page-content h-[80%] w-full flex flex-col justify-between overflow-x-hidden  pt-3 px-4"
+        className="page-content h-[80%] landscape:h-full w-full flex flex-col justify-between overflow-x-hidden  pt-3 px-4"
       >
         <div className="items-center text-white text-xl w-full">
           <h2 className="text-3xl text-white text-center font-bold mb-6 ">
@@ -151,7 +184,11 @@ function ProjectView({ project, onCollectStart, onCollectEnd }) {
           />
         </div>
 
-        <Coin project={project} />
+        {/* <div onClick={(e)=>{
+          console.log(" I was clicked ohhhh")
+        }} className="h-36 w-36 bg-green-500 mx-auto"></div> */}
+
+        <Coin isLandScape={isLandScape} project={project} />
 
         <div className="flex flex-col mx-4">
           <div className="flex justify-between text-white text-2xl">
@@ -163,7 +200,7 @@ function ProjectView({ project, onCollectStart, onCollectEnd }) {
             {!canCollect && <CountdownCircle onEnd={onCountEnd} />}
           </div>
 
-          <div className="flex justify-center">
+          <div className="justify-center">
             <button
               ref={collectButtonRef}
               disabled={!canCollect}

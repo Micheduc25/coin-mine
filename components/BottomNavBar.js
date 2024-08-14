@@ -1,11 +1,22 @@
+import { useEffect, useState } from "react";
 import NavBarItem from "./NavBarItem";
 
+import "@/styles/NavBar.css";
+
 export default function BottomNavBar({ bottom = 24 }) {
+  const [isLandscape, setIsLandscape] = useState(false);
+
+  useEffect(() => {
+    if (window.innerWidth > window.innerHeight && window.innerHeight < 500) {
+      setIsLandscape(true);
+    }
+  }, []);
+
   return (
     <nav
       id="bottom-nav"
       style={{ bottom: `${bottom}px` }}
-      className={`fixed bg-primary-dark shadow-xl rounded-lg  py-[5px] px-[3px] left-1/2 -translate-x-1/2 z-20`}
+      className={`${isLandscape ? "landscape" : ""}`}
     >
       <div className="container flex justify-between">
         <NavBarItem text="Mine" href="/">

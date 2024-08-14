@@ -1,6 +1,6 @@
 import AirDropCoin from "@/components/AirDropCoin";
 import "@/styles/AirDrop.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { useNotification } from "@/contexts/NotificationContext";
 import { toggleMute } from "@/store/mineSlice";
@@ -14,6 +14,8 @@ const AirDropPage = () => {
   const { showNotification } = useNotification();
 
   const { isMute } = useSelector((state) => state.mine);
+
+  const [isLandscape, setIsLandScape] = useState(false);
 
   const toggleSound = () => {
     dispatch(toggleMute());
@@ -33,8 +35,20 @@ const AirDropPage = () => {
     setClicks((prev) => prev + 1);
   };
 
+  useEffect(() => {
+    if (window.innerWidth > window.innerHeight && window.innerHeight < 500) {
+      setIsLandScape(true);
+    }
+  }, []);
+
   return (
-    <div className="h-screen relative text-white">
+    <div
+      className="h-screen relative text-white"
+      style={{
+        width: isLandscape ? "calc(100% - 100px)" : "100%",
+        marginLeft: isLandscape ? "auto" : "0",
+      }}
+    >
       {/* mute toggle button */}
       <div
         className="absolute right-5 top-5 text-white z-10"

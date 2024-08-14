@@ -13,6 +13,8 @@ const Projet = () => {
 
   const [currentItems, setCurrentItems] = useState([]);
 
+  const [isLandscape, setIsLandscape] = useState(false);
+
   const handleSearch = (searchTerm) => {
     const result = projects.filter((p) =>
       p.name.toLowerCase().match(searchTerm.toLowerCase())
@@ -40,10 +42,20 @@ const Projet = () => {
     setFilteredProjects(() => {
       return projects;
     });
+
+    if (window.innerWidth > window.innerHeight && window.innerHeight < 500) {
+      setIsLandscape(true);
+    }
   }, []);
 
   return (
-    <div className="p-2">
+    <div
+      className="p-2"
+      style={{
+        width: isLandscape ? "calc(100% - 100px)" : "100%",
+        marginLeft: isLandscape ? "auto" : "0",
+      }}
+    >
       <SearchBar
         onSearch={handleSearch}
         onClear={() => setFilteredProjects(projects)}

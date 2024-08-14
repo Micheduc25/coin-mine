@@ -3,8 +3,7 @@ import "../styles/coin.css";
 
 import { useDispatch, useSelector } from "react-redux";
 import { updateProject } from "../store/mineSlice";
-
-const Coin = ({ unitAmount = 1, project, isLandScape }) => {
+const TestCoin = ({ unitAmount = 1, project, isLandScape }) => {
   const dispatch = useDispatch();
 
   const { isMute } = useSelector((state) => state.mine);
@@ -13,6 +12,10 @@ const Coin = ({ unitAmount = 1, project, isLandScape }) => {
 
   const coinRef = useRef(null);
   const [coinSize, setCoinSize] = useState(isLandScape ? 100 : 200);
+
+  const handleClick = (e) => {
+    console.log("test coin clicked");
+  };
 
   const handleTap = (event) => {
     const coin = coinRef.current;
@@ -116,7 +119,7 @@ const Coin = ({ unitAmount = 1, project, isLandScape }) => {
   }, [isMute]);
 
   return (
-    <div>
+    <div className="c-container w-fit mx-auto">
       <div
         ref={coinRef}
         className="c-coin rounded-full w-fit overflow-hidden shadow-lg transition-transform duration-100 mx-auto"
@@ -134,10 +137,10 @@ const Coin = ({ unitAmount = 1, project, isLandScape }) => {
           width={coinSize}
           height={coinSize}
         />
+        <div className="c-shadow"></div>
       </div>
-      <div className="c-shadow"></div>
     </div>
   );
 };
 
-export default Coin;
+export default TestCoin;
