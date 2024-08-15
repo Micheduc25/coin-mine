@@ -54,7 +54,7 @@ const ProjectItem = ({ project }) => {
 
           <div
             style={{ color: project.isFair ? "darkgreen" : "red" }}
-            className="font-bergen font-bold"
+            className="font-bergen font-extrabold text-sm px-1 bg-white bg-opacity-60 rounded-lg"
           >
             {project.isFair ? "Fair Mint" : "Fixed Cap"}
           </div>
