@@ -41,7 +41,7 @@ const AirDropCoin = ({ unitAmount = 1, onTap }) => {
     const coin = document.createElement("div");
     coin.setAttribute(
       "class",
-      "s-coin w-fit fixed flex text-white items-center text-sm z-10"
+      "s-coin w-fit fixed flex text-white items-center text-sm z-50"
     );
     coin.innerHTML = `<img src="${image}" alt="AirDropCoin" width="30" height="30" class="rounded-full overflow-hidden" /> <span class="select-none">+${unitAmount}</span>`;
     coin.style.left = `${event.clientX - 15}px`;
@@ -111,6 +111,7 @@ const AirDropCoin = ({ unitAmount = 1, onTap }) => {
     <div className="c-container w-fit mx-auto">
       <div
         ref={coinRef}
+        style={{ height: "200px", width: "200px" }}
         className="c-coin rounded-full w-fit overflow-hidden shadow-lg transition-transform duration-100 mx-auto"
         onPointerDown={(e) => {
           // tilt the main coin
@@ -118,7 +119,7 @@ const AirDropCoin = ({ unitAmount = 1, onTap }) => {
           createSmallCoin(e);
         }}
       >
-        <img src={image} alt="AirDropCoin" width={200} height={200} />
+        <img src={image} alt="AirDropCoin" />
         <div className="c-shadow"></div>
       </div>
     </div>

@@ -132,6 +132,8 @@ function ProjectView({ project, onCollectStart, onCollectEnd }) {
         const isLandscapeNew =
           e.target.type === "landscape-primary" ||
           e.target.type === "landscape-secondary";
+
+        console.log("orientation changed to: ", isLandscapeNew);
         if (prev !== isLandscapeNew) {
           window.location.reload();
           return isLandscapeNew;

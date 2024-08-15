@@ -38,6 +38,6 @@
 }
 
 body {
-  overflow: hidden;
+  /* overflow: hidden; */
   background: radial-gradient(circle, #1d4277 30%, #091933 100%);
 }
