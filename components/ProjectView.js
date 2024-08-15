@@ -19,16 +19,6 @@ function ProjectView({ project, onCollectStart, onCollectEnd }) {
 
   const { balance } = useSelector((state) => state.mine);
 
-  const simulateCoinClick = (e) => {
-    const customEvent = new CustomEvent("coinClick", {
-      detail: e,
-      bubbles: true,
-      cancelable: true,
-    });
-
-    e.target.dispatchEvent(customEvent);
-  };
-
   const onCountEnd = () => {
     setCanCollect(true);
   };
@@ -153,11 +143,6 @@ function ProjectView({ project, onCollectStart, onCollectEnd }) {
 
   return (
     <div className="h-screen relative">
-      {/* <div className="page-background h-full w-full absolute overflow-hidden -z-10 ">
-        <div className="bg-slice1"></div>
-        <div className="bg-slice2"></div>
-      </div> */}
-
       <div
         ref={pageContentRef}
         className="page-content h-[80%] landscape:h-full w-full flex flex-col justify-between overflow-x-hidden  pt-3 px-4"
