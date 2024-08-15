@@ -5,7 +5,6 @@ import "@/styles/Home.css";
 import { useEffect, useState, useRef } from "react";
 import { updateBalance, updateProject } from "../store/mineSlice";
 import { useSelector, useDispatch } from "react-redux";
-import TestCoin from "./TestCoin";
 
 function ProjectView({ project, onCollectStart, onCollectEnd }) {
   const [canCollect, setCanCollect] = useState(false);
@@ -183,10 +182,6 @@ function ProjectView({ project, onCollectStart, onCollectEnd }) {
             maxDate={project.endDate}
           />
         </div>
-
-        {/* <div onClick={(e)=>{
-          console.log(" I was clicked ohhhh")
-        }} className="h-36 w-36 bg-green-500 mx-auto"></div> */}
 
         <Coin isLandScape={isLandScape} project={project} />
 

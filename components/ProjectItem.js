@@ -41,14 +41,23 @@ const ProjectItem = ({ project }) => {
         </div>
       </div>
       <div className="project-shape shape-r">
-        <div className="absolute right-4 z-10 flex items-center justify-end h-full w-full">
-          <span className="mr-2">{project.currentVal ?? 0}</span>
-          <Image
-            src="/images/coin.png"
-            alt="Arrow Right"
-            width={24}
-            height={24}
-          />
+        <div className="absolute right-4 z-10  h-full w-full pt-2 flex flex-col items-end">
+          <div className="flex items-center justify-end mb-2">
+            <span className="mr-2">{project.currentVal ?? 0}</span>
+            <Image
+              src="/images/coin.png"
+              alt="Coin Right"
+              width={24}
+              height={24}
+            />
+          </div>
+
+          <div
+            style={{ color: project.isFair ? "darkgreen" : "red" }}
+            className="font-bergen font-bold"
+          >
+            {project.isFair ? "Fair Mint" : "Fixed Cap"}
+          </div>
         </div>
       </div>
     </Link>

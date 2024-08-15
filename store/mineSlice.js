@@ -15,6 +15,7 @@ const initialState = {
       endDate: null,
       mode: "range",
       image: "/images/coin3.jpeg",
+      isFair: false,
     },
     {
       id: 2,
@@ -26,6 +27,7 @@ const initialState = {
       endDate: null,
       mode: "range",
       image: "/images/coin4.jpeg",
+      isFair: true,
     },
     {
       id: 3,
@@ -37,6 +39,7 @@ const initialState = {
       endDate: null,
       mode: "range",
       image: "/images/coin4.jpeg",
+      isFair: false,
     },
     {
       id: 4,
@@ -48,6 +51,7 @@ const initialState = {
       endDate: null,
       mode: "range",
       image: "/images/coin3.jpeg",
+      isFair: false,
     },
     {
       id: 5,
@@ -59,6 +63,7 @@ const initialState = {
       endDate: null,
       mode: "range",
       image: "/images/eth.jpeg",
+      isFair: false,
     },
     {
       id: 6,
@@ -70,6 +75,7 @@ const initialState = {
       endDate: null,
       mode: "range",
       image: "/images/coin3.jpeg",
+      isFair: true,
     },
     {
       id: 7,
@@ -81,6 +87,7 @@ const initialState = {
       endDate: null,
       mode: "range",
       image: "/images/coin4.jpeg",
+      isFair: true,
     },
     {
       id: 8,
@@ -92,6 +99,7 @@ const initialState = {
       endDate: null,
       mode: "range",
       image: "/images/coin.png",
+      isFair: true,
     },
     {
       id: 9,
@@ -103,6 +111,7 @@ const initialState = {
       endDate: null,
       mode: "range",
       image: "/images/coin.png",
+      isFair: true,
     },
     {
       id: 10,
@@ -114,6 +123,7 @@ const initialState = {
       endDate: null,
       mode: "range",
       image: "/images/coin3.jpeg",
+      isFair: true,
     },
     {
       id: 11,
@@ -125,6 +135,7 @@ const initialState = {
       endDate: null,
       mode: "range",
       image: "/images/eth.jpeg",
+      isFair: false,
     },
     {
       id: 12,
@@ -136,6 +147,7 @@ const initialState = {
       endDate: null,
       mode: "range",
       image: "/images/eth.jpeg",
+      isFair: true,
     },
     {
       id: 13,
@@ -147,6 +159,7 @@ const initialState = {
       endDate: null,
       mode: "range",
       image: "/images/coin2.jpeg",
+      isFair: true,
     },
     {
       id: 14,
@@ -158,6 +171,7 @@ const initialState = {
       endDate: null,
       mode: "range",
       image: "/images/coin.png",
+      isFair: false,
     },
     {
       id: 15,
@@ -169,6 +183,7 @@ const initialState = {
       endDate: null,
       mode: "range",
       image: "/images/coin3.jpeg",
+      isFair: false,
     },
     {
       id: 16,
@@ -180,6 +195,7 @@ const initialState = {
       endDate: null,
       mode: "range",
       image: "/images/coin4.jpeg",
+      isFair: true,
     },
     {
       id: 17,
@@ -191,6 +207,7 @@ const initialState = {
       endDate: null,
       mode: "range",
       image: "/images/eth.jpeg",
+      isFair: false,
     },
     {
       id: 18,
@@ -202,6 +219,7 @@ const initialState = {
       endDate: null,
       mode: "range",
       image: "/images/coin.png",
+      isFair: true,
     },
     {
       id: 19,
@@ -213,6 +231,7 @@ const initialState = {
       endDate: null,
       mode: "range",
       image: "/images/coin4.jpeg",
+      isFair: true,
     },
     {
       id: 20,
@@ -224,6 +243,7 @@ const initialState = {
       endDate: null,
       mode: "range",
       image: "/images/coin2.jpeg",
+      isFair: false,
     },
     {
       id: 21,
@@ -235,6 +255,7 @@ const initialState = {
       endDate: null,
       mode: "range",
       image: "/images/coin3.jpeg",
+      isFair: true,
     },
     {
       id: 22,
@@ -246,6 +267,7 @@ const initialState = {
       endDate: null,
       mode: "range",
       image: "/images/coin2.jpeg",
+      isFair: true,
     },
     {
       id: 23,
@@ -257,6 +279,7 @@ const initialState = {
       endDate: null,
       mode: "range",
       image: "/images/coin4.jpeg",
+      isFair: true,
     },
     {
       id: 24,
@@ -268,6 +291,7 @@ const initialState = {
       endDate: null,
       mode: "range",
       image: "/images/coin3.jpeg",
+      isFair: true,
     },
     {
       id: 25,
@@ -279,6 +303,7 @@ const initialState = {
       endDate: null,
       mode: "range",
       image: "/images/coin2.jpeg",
+      isFair: true,
     },
     {
       id: 26,
@@ -290,6 +315,7 @@ const initialState = {
       endDate: null,
       mode: "range",
       image: "/images/coin3.jpeg",
+      isFair: true,
     },
     {
       id: 27,
@@ -301,6 +327,7 @@ const initialState = {
       endDate: null,
       mode: "range",
       image: "/images/coin2.jpeg",
+      isFair: true,
     },
     {
       id: 28,
@@ -312,6 +339,7 @@ const initialState = {
       endDate: null,
       mode: "range",
       image: "/images/eth.jpeg",
+      isFair: true,
     },
     {
       id: 29,
@@ -323,6 +351,7 @@ const initialState = {
       endDate: null,
       mode: "range",
       image: "/images/coin3.jpeg",
+      isFair: true,
     },
     {
       id: 30,
@@ -334,6 +363,7 @@ const initialState = {
       endDate: null,
       mode: "range",
       image: "/images/eth.jpeg",
+      isFair: true,
     },
     {
       id: 31,
@@ -345,6 +375,7 @@ const initialState = {
       endDate: null,
       mode: "range",
       image: "/images/coin.png",
+      isFair: false,
     },
     {
       id: 32,
@@ -356,6 +387,7 @@ const initialState = {
       endDate: null,
       mode: "range",
       image: "/images/coin.png",
+      isFair: true,
     },
     {
       id: 33,
@@ -367,6 +399,7 @@ const initialState = {
       endDate: null,
       mode: "range",
       image: "/images/coin2.jpeg",
+      isFair: true,
     },
     {
       id: 34,
@@ -378,6 +411,7 @@ const initialState = {
       endDate: null,
       mode: "range",
       image: "/images/coin.png",
+      isFair: true,
     },
     {
       id: 35,
@@ -389,6 +423,7 @@ const initialState = {
       endDate: null,
       mode: "range",
       image: "/images/eth.jpeg",
+      isFair: false,
     },
     {
       id: 36,
@@ -400,6 +435,7 @@ const initialState = {
       endDate: null,
       mode: "range",
       image: "/images/coin.png",
+      isFair: false,
     },
     {
       id: 37,
@@ -411,6 +447,7 @@ const initialState = {
       endDate: null,
       mode: "range",
       image: "/images/coin2.jpeg",
+      isFair: false,
     },
     {
       id: 38,
@@ -422,6 +459,7 @@ const initialState = {
       endDate: null,
       mode: "range",
       image: "/images/coin2.jpeg",
+      isFair: false,
     },
     {
       id: 39,
@@ -433,6 +471,7 @@ const initialState = {
       endDate: null,
       mode: "range",
       image: "/images/eth.jpeg",
+      isFair: true,
     },
     {
       id: 40,
@@ -444,6 +483,7 @@ const initialState = {
       endDate: null,
       mode: "range",
       image: "/images/coin4.jpeg",
+      isFair: false,
     },
   ],
 };
