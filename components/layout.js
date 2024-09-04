@@ -6,6 +6,24 @@ import { useEffect, useState } from "react";
 export default function Layout({ children }) {
   const router = useRouter();
 
+  const [isLandscape, setIsLandScape] = useState(false);
+
+  useEffect(() => {
+    screen.orientation.addEventListener("change", (e) => {
+      setIsLandScape((prev) => {
+        const isLandscapeNew =
+          e.target.type === "landscape-primary" ||
+          e.target.type === "landscape-secondary";
+
+        if (prev !== isLandscapeNew) {
+          window.location.reload();
+          return isLandscapeNew;
+        }
+        return prev;
+      });
+    });
+  }, []);
+
   return (
     <>
       <AnimatePresence mode="wait">

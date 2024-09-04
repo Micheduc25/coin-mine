@@ -113,7 +113,7 @@ const Wallet = () => {
             <div className="text-white text-2xl font-bergen font-bold mx-auto text-center mt-12">
               Minted Projects
             </div>
-            {projects.slice(0, 3).map((project) => (
+            {projects.slice(0, 15).map((project) => (
               <ProjectItem key={project.id} project={project} />
             ))}
           </div>
