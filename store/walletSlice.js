@@ -10,7 +10,7 @@ const initialState = {
     {
       id: "1",
       cryptoType: "BTC",
-      amount: 0.05,
+      amount: 0.002,
       date: "2024-08-27T14:30:00",
       status: "Confirmed",
       type: "buy",
@@ -18,8 +18,8 @@ const initialState = {
     {
       id: "2",
       cryptoType: "ETH",
-      amount: 1.5,
-      date: "2024-08-27T12:15:00",
+      amount: 0.11,
+      date: "2024-08-27T12:12:00",
       status: "Pending",
       type: "sell",
     },
@@ -28,8 +28,86 @@ const initialState = {
       id: "3",
       cryptoType: "ETH",
       amount: 1.5,
+      date: "2024-08-27T12:11:00",
+      status: "Pending",
+      type: "mint",
+    },
+
+    {
+      id: "4",
+      cryptoType: "BTC",
+      amount: 0.05,
+      date: "2024-08-27T14:30:00",
+      status: "Pending",
+      type: "buy",
+    },
+    {
+      id: "5",
+      cryptoType: "ETH",
+      amount: 1.81,
+      date: "2024-08-27T10:15:00",
+      status: "Pending",
+      type: "sell",
+    },
+
+    {
+      id: "6",
+      cryptoType: "ETH",
+      amount: 1.35,
       date: "2024-08-27T12:15:00",
       status: "Failed",
+      type: "mint",
+    },
+
+    {
+      id: "7",
+      cryptoType: "BTC",
+      amount: 0.015,
+      date: "2024-08-27T14:30:00",
+      status: "Confirmed",
+      type: "buy",
+    },
+    {
+      id: "8",
+      cryptoType: "ETH",
+      amount: 1.5,
+      date: "2024-08-27T12:15:00",
+      status: "Pending",
+      type: "sell",
+    },
+
+    {
+      id: "9",
+      cryptoType: "ETH",
+      amount: 3.1,
+      date: "2024-08-27T12:15:00",
+      status: "Confirmed",
+      type: "mint",
+    },
+
+    {
+      id: "10",
+      cryptoType: "BTC",
+      amount: 0.05,
+      date: "2024-08-27T14:30:00",
+      status: "Failed",
+      type: "buy",
+    },
+    {
+      id: "11",
+      cryptoType: "ETH",
+      amount: 1.5,
+      date: "2024-08-27T12:15:00",
+      status: "Pending",
+      type: "sell",
+    },
+
+    {
+      id: "12",
+      cryptoType: "ETH",
+      amount: 1.2,
+      date: "2024-08-27T12:15:00",
+      status: "Pending",
       type: "mint",
     },
   ],
@@ -54,6 +132,7 @@ const walletSlice = createSlice({
       );
     },
     resetWallet(state) {
+      state.wallet.id = null;
       state.wallet.balance = 0;
       state.transactions = [];
     },

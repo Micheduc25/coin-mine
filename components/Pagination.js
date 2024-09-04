@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 
 const Pagination = ({ totalItems, itemsPerPage, onPageChange }) => {
   const [currentPage, setCurrentPage] = useState(1);
-
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
   useEffect(() => {
@@ -21,10 +20,12 @@ const Pagination = ({ totalItems, itemsPerPage, onPageChange }) => {
       startPage = Math.max(1, endPage - 4);
     }
 
-    return Array.from(
+    const pagesArray = Array.from(
       { length: endPage - startPage + 1 },
       (_, i) => startPage + i
     );
+
+    return pagesArray;
   };
 
   return (
