@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateWallet, resetWallet } from "@/store/walletSlice";
 import { useNotification } from "@/contexts/NotificationContext";
-import ProjectItem from "@/components/ProjectItem";
+import WalletProjectItem from "@/components/WalletProject";
 
 const Wallet = () => {
   const [isLandscape, setIsLandScape] = useState(false);
@@ -114,7 +114,7 @@ const Wallet = () => {
               Minted Projects
             </div>
             {projects.slice(0, 15).map((project) => (
-              <ProjectItem key={project.id} project={project} />
+              <WalletProjectItem key={project.id} project={project} />
             ))}
           </div>
         </div>

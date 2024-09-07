@@ -18,12 +18,12 @@ const AirdropForm = ({ onSubmit }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center p-4 overflow-auto">
-      <div className="bg-gray-800 rounded-lg p-8 max-w-md w-full shadow-lg">
+    <div className="inset-0 flex items-center justify-center p-4 overflow-auto mb-28">
+      <div className="bg-gray-800 rounded-lg p-8 max-w-md w-full shadow-lg mb-24">
         <div className="text-center">
           <i className="fi fi-ss-parachute-box text-4xl"></i>
         </div>
-        <h2 className="text-2xl font-bold mb-6 text-gray-100 text-center">
+        <h2 className="text-2xl font-bold mb-6 text-gray-100 text-center ">
           Airdrop Registration
         </h2>
         <form onSubmit={handleSubmit(onSubmitForm)} className="space-y-4">

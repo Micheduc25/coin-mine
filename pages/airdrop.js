@@ -18,8 +18,8 @@ const AirdropForm = ({ onSubmit }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center p-4 overflow-y-auto">
-      <div className="bg-gray-800 rounded-lg p-4 sm:p-6 md:p-8 w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl shadow-lg">
+    <div className="inset-0 flex items-center justify-center p-4 overflow-y-auto min-h-screen">
+      <div className="bg-gray-800 rounded-lg p-4 sm:p-6 md:p-8 w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl shadow-lg mb-24">
         <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-gray-100 text-center">
           Airdrop Registration
         </h2>
