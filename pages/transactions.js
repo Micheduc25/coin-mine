@@ -46,7 +46,7 @@ const Transactions = () => {
 
   return (
     <div
-      className="overflow-x-hidden"
+      className="overflow-x-hidden max-h-screen overflow-y-auto pb-24"
       style={{
         width: isLandscape ? "calc(100% - 100px)" : "100%",
         marginLeft: isLandscape ? "auto" : "0",

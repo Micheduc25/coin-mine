@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { updateWallet, resetWallet } from "@/store/walletSlice";
 import { useNotification } from "@/contexts/NotificationContext";
 import WalletProjectItem from "@/components/WalletProject";
+import Pagination from "@/components/Pagination";
+import { current } from "@reduxjs/toolkit";
 
 const Wallet = () => {
   const [isLandscape, setIsLandScape] = useState(false);
@@ -15,10 +17,21 @@ const Wallet = () => {
   const { projects } = useSelector((state) => state.mine);
   const { showNotification } = useNotification();
 
+  const [itemsPerPage, setItemsPerPage] = useState(5);
+  const [currentItems, setCurrentItems] = useState([]);
+
+  const onPageChange = (page) => {
+    const indexOfLastItem = page * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    setCurrentItems(projects.slice(indexOfFirstItem, indexOfLastItem));
+  };
+
   useEffect(() => {
     if (window.innerWidth > window.innerHeight && window.innerHeight < 500) {
       setIsLandScape(true);
     }
+
+    setItemsPerPage(Math.floor(window.innerHeight / 120));
 
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -48,12 +61,16 @@ const Wallet = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
+  useEffect(() => {
+    onPageChange(1);
+  }, [itemsPerPage]);
   return (
     <div
       style={{
         width: isLandscape ? "calc(100% - 100px)" : "100%",
         marginLeft: isLandscape ? "auto" : "0",
       }}
+      className="max-h-screen overflow-y-auto pb-24"
     >
       {!wallet.id ? (
         <div className="connect-but-container h-screen flex items-center justify-center">
@@ -113,9 +130,15 @@ const Wallet = () => {
             <div className="text-white text-2xl font-bergen font-bold mx-auto text-center mt-12">
               Minted Projects
             </div>
-            {projects.slice(0, 15).map((project) => (
+            {currentItems.map((project) => (
               <WalletProjectItem key={project.id} project={project} />
             ))}
+
+            <Pagination
+              totalItems={projects.length}
+              itemsPerPage={itemsPerPage}
+              onPageChange={onPageChange}
+            />
           </div>
         </div>
       )}

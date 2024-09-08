@@ -10,7 +10,14 @@
   position: absolute;
   height: 100%;
   background-color: inherit;
-  transform: skew(50deg);
+  transform: skew(40deg);
+}
+
+@screen xs {
+  .project-shape::after,
+  .shape-r::after {
+    transform: skew(50deg);
+  }
 }
 
 .project-shape::after {

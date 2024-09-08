@@ -36,6 +36,10 @@ module.exports = {
         "3xs": ".5rem",
         "4xs": ".375rem",
       },
+
+      screens: {
+        xs: "400px",
+      },
     },
   },
   plugins: [],

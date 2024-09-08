@@ -50,7 +50,7 @@ const Projet = () => {
 
   return (
     <div
-      className="p-2 overflow-auto"
+      className="p-2 overflow-auto max-h-screen mb-24"
       style={{
         width: isLandscape ? "calc(100% - 100px)" : "100%",
         marginLeft: isLandscape ? "auto" : "0",
