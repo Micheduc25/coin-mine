@@ -18,58 +18,57 @@ const AirdropForm = ({ onSubmit }) => {
   };
 
   return (
-    <div className="inset-0 flex items-center justify-center p-4 overflow-auto mb-28">
-      <div className="bg-gray-800 rounded-lg p-8 max-w-md w-full shadow-lg mb-24">
-        <div className="text-center">
-          <i className="fi fi-ss-parachute-box text-4xl"></i>
-        </div>
-        <h2 className="text-2xl font-bold mb-6 text-gray-100 text-center ">
+    <div className="inset-0 flex items-center justify-center p-4 overflow-y-auto min-h-screen">
+      <div className="bg-gray-800 rounded-lg p-4 sm:p-6 md:p-8 w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl shadow-lg mb-24">
+        <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-gray-100 text-center">
           Airdrop Registration
         </h2>
         <form onSubmit={handleSubmit(onSubmitForm)} className="space-y-4">
-          <div>
-            <label
-              htmlFor="telegram"
-              className="block text-sm font-medium text-gray-300"
-            >
-              Telegram Pseudo
-            </label>
-            <input
-              type="text"
-              id="telegram"
-              placeholder="@username"
-              {...register("telegram", {
-                required: "Telegram pseudo is required",
-              })}
-              className=" p-2 mt-1 block w-full rounded-md bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-            />
-            {errors.telegram && (
-              <p className="mt-1 text-sm text-red-400">
-                {errors.telegram.message}
-              </p>
-            )}
-          </div>
-          <div>
-            <label
-              htmlFor="twitter"
-              className="block text-sm font-medium text-gray-300"
-            >
-              Twitter Handle
-            </label>
-            <input
-              type="text"
-              id="twitter"
-              placeholder="@username"
-              {...register("twitter", {
-                required: "Twitter handle is required",
-              })}
-              className="p-2 mt-1 block w-full rounded-md bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
-            />
-            {errors.twitter && (
-              <p className="mt-1 text-sm text-red-400">
-                {errors.twitter.message}
-              </p>
-            )}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label
+                htmlFor="telegram"
+                className="block text-sm font-medium text-gray-300"
+              >
+                Telegram Pseudo
+              </label>
+              <input
+                type="text"
+                id="telegram"
+                placeholder="@username"
+                {...register("telegram", {
+                  required: "Telegram pseudo is required",
+                })}
+                className="p-2 mt-1 block w-full rounded-md bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
+              />
+              {errors.telegram && (
+                <p className="mt-1 text-sm text-red-400">
+                  {errors.telegram.message}
+                </p>
+              )}
+            </div>
+            <div>
+              <label
+                htmlFor="twitter"
+                className="block text-sm font-medium text-gray-300"
+              >
+                Twitter Handle
+              </label>
+              <input
+                type="text"
+                id="twitter"
+                placeholder="@username"
+                {...register("twitter", {
+                  required: "Twitter handle is required",
+                })}
+                className="p-2 mt-1 block w-full rounded-md bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
+              />
+              {errors.twitter && (
+                <p className="mt-1 text-sm text-red-400">
+                  {errors.twitter.message}
+                </p>
+              )}
+            </div>
           </div>
           <div>
             <label
@@ -81,7 +80,7 @@ const AirdropForm = ({ onSubmit }) => {
             <input
               type="email"
               id="email"
-              placeholder="example@email.com"
+              placeholder="mail@example.com"
               {...register("email", {
                 required: "Email address is required",
                 pattern: {
@@ -110,10 +109,10 @@ const AirdropForm = ({ onSubmit }) => {
               placeholder="Solana address"
               {...register("solana", {
                 required: "Solana address is required",
-                pattern: {
-                  value: /^[1-9A-HJ-NP-Za-km-z]{32,44}$/, // eg: 7CXBG3tWYm9bH5bp4yHr8T1yZQYMQMF4uTVLV3m9SuCW
-                  message: "Invalid Solana address format",
-                },
+                // pattern: {
+                //   value: /^[1-9A-HJ-NP-Za-km-z]{32,44}$/,
+                //   message: "Invalid Solana address format",
+                // },
               })}
               className="p-2 mt-1 block w-full rounded-md bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
             />
