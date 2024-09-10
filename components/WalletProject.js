@@ -25,7 +25,7 @@ const TransferPopup = ({ onClose, onSubmit }) => {
     >
       <div className="bg-primary-dark rounded-lg p-6 w-96">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-bold text-gray-800">Transfert</h2>
+          <h2 className="text-xl font-bold text-white">Transfert</h2>
           <button
             onClick={onClose}
             className="text-gray-500 hover:text-gray-700"
@@ -37,7 +37,7 @@ const TransferPopup = ({ onClose, onSubmit }) => {
           <div className="mb-4">
             <label
               htmlFor="to"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-white"
             >
               To
             </label>
@@ -46,14 +46,15 @@ const TransferPopup = ({ onClose, onSubmit }) => {
               id="to"
               value={to}
               onChange={(e) => setTo(e.target.value)}
-              className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              placeholder="Wallet address"
+              className="mt-1 p-2 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               required
             />
           </div>
           <div className="mb-4">
             <label
               htmlFor="amount"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-white"
             >
               Amount
             </label>
@@ -61,8 +62,9 @@ const TransferPopup = ({ onClose, onSubmit }) => {
               type="number"
               id="amount"
               value={amount}
+              placeholder="Amount"
               onChange={(e) => setAmount(e.target.value)}
-              className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="mt-1 p-2 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               required
             />
           </div>
